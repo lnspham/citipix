@@ -7,38 +7,44 @@ $(document).ready(function(){
 		event.preventDefault();
 
 		//Define the variables
-		var nyc = ""; //New York
-		var sf = ""; //San Franciso
-		var la = ""; //Los Angeles
-		var atx = ""; //Austin
-		var syd = ""; //Sydney	
-		var city = $('#city-type').val(); //Get user value
 
-		if (city = "New York" || city = "nyc" || city = "New York City"){
+		/*Get user value & Remove extra spaces or 
+		new lines that users or the browser might add before or after their input*/
+		var city = $('#city-type').val().trim(); 
+
+		var cityUpper = city.toUpperCase(); //Converting user inputs to uppercase
+
+
+		//if and else condition for users input
+		if (cityUpper == "NEW YORK" || cityUpper == "NYC" || cityUpper == "NEW YORK CITY"){
 
 			$('body').css('background-image', 'url(images/nyc.jpg)');
 
-		}else if (city = "San Francisco" || city = "SF" || city = "Bay Area"){
+		 }else if (cityUpper == "SAN FRANCISCO" || cityUpper == "SF" || cityUpper == "BAY AREA"){
 
-			$('body').css('background-image', 'url(images/sf.jpg)');
+		 	$('body').css('background-image', 'url(images/sf.jpg)');
 
-		}else if (city = "Austin" || city = "ATX"){
+		 }else if (cityUpper == "AUSTIN" || cityUpper == "ATX"){
 
-			$('body').css('background-image', 'url(images/austin.jpg)');
+		 	$('body').css('background-image', 'url(images/austin.jpg)');
 		
-		}else if (city = "Sydney" || city = "SYD"){
+		 }else if (cityUpper == "SYDNEY" || cityUpper == "SYD"){
 
-			$('body').css('background-image', 'url(images/sydney.jpg)');
+		 	$('body').css('background-image', 'url(images/sydney.jpg)');
 
-		}else{
+		 }else{
 
-			$('body').css('background-image', 'url(images/citipix_skyline.jpg)');
-		}
+		 	$('body').css('background-image', 'url(images/citipix_skyline.jpg)');
+		 }
+
+		$('#city-type').val("");
+
 
 		
 	};
 
 	//Calls the actions
-	$('#submit-btn').submit('enterCity');
+	$('form').submit(enterCity);
+
 
 });
